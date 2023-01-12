@@ -7,9 +7,8 @@ import { Car } from '../models/Car';
 
 const MainScene = () => {
   return (
-    <Canvas camera={{ position: [0, 7, 7] }}>
-      <OrbitControls />
-      <Sky distance={20} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
+    <Canvas camera={{ position: [0, 3, 9], rotation: [0, 0, 0] }}>
+      {/* <OrbitControls /> */}
       <color attach={'background'} args={['rgb(119, 227, 248)']} />
       <hemisphereLight intensity={0.35} />
       <spotLight
@@ -18,9 +17,6 @@ const MainScene = () => {
         penumbra={1}
         intensity={2}
         castShadow />
-      {/* <Box position={[-4, 0, 0]} />
-      <Box position={[0, 0, 0]} />
-      <Box position={[4, 0, 0]} /> */}
       <Suspense fallback={null}>
         <Car position={[1, -1, 0]} />
       </Suspense>
