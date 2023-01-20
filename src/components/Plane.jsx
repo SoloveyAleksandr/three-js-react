@@ -4,10 +4,9 @@ const Plane = (props) => {
   const ref = useRef(null);
 
   return (
-    <mesh ref={ref} {...props}>
-      <planeBufferGeometry args={[50, 50]} />
-      <meshBasicMaterial color={'rgb(247, 215, 119)'} />
-      {/* <meshLambertMaterial color={'rgb(247, 215, 119)'} /> */}
+    <mesh {...props} receiveShadow>
+      <planeGeometry args={[10, 10, 1, 1]} />
+      <shadowMaterial transparent opacity={0.2} />
     </mesh>
   );
 };
