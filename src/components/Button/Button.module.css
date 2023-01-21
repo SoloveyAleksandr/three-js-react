@@ -1,0 +1,28 @@
+.btn {
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: 2px solid rgb(85, 116, 255);
+  border-radius: 4px;
+  background-color: #fff;
+  color: rgb(85, 116, 255);
+  cursor: pointer;
+  transition: .3s;
+  pointer-events: all;
+}
+
+.btn._disable {
+  background-color: rgb(85, 116, 255);
+  color: #fff;
+  pointer-events: none;
+}
+
+.btn:hover {
+  background-color: rgb(85, 116, 255);
+  color: #fff;
+  opacity: 0.5;
+}
