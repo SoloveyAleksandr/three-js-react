@@ -7,11 +7,12 @@ Source: https://sketchfab.com/3d-models/low-poly-gaming-desk-6f1bc394de704e488d4
 Title: Low Poly Gaming Desk
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from 'react';
+import { useGLTF } from '@react-three/drei';
 
-export function Table(props) {
-  const { nodes, materials } = useGLTF('/models/Table/table.gltf')
+const TableModel = (props) => {
+  const { nodes, materials } = useGLTF('/models/Table/table.gltf');
+
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.31}>
@@ -52,4 +53,6 @@ export function Table(props) {
   )
 }
 
-useGLTF.preload('/table.gltf')
+useGLTF.preload('/table.gltf');
+
+export default TableModel;

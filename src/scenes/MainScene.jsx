@@ -4,14 +4,15 @@ import { Suspense, useRef, useEffect, useState } from 'react';
 import Plane from '../components/Plane';
 import Interface from '../interface/Interface';
 import { AnimSkin } from '../models/AnimSkin';
-import { Table } from '../models/Table';
 import { useControls } from 'leva';
 import { useCharacterAnimations } from '../contexts/CharacterAnimations';
-import { Vector3 } from 'three';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
+import TableModel from '../models/Table';
+import { useLayoutEffect } from 'react';
 
 const MainScene = () => {
-  const mouse = useRef([0, 0]);
+  gsap.registerPlugin();
+
   const lightRef = useRef(null);
   const computerRef = useRef(null);
 
@@ -77,28 +78,33 @@ const MainScene = () => {
   })
 
   useEffect(() => {
-    // console.log(computerRef.current)
-    if (animations[animationIndex] === 'seatIdle') {
-      setMainIntensity(0.1);
-      gsap.from(computerRef.current, {
-        x: 6,
-        z: 6,
-        duration: 3,
-      })
-    } else {
-      setMainIntensity(2);
-      gsap.to(computerRef.current, {
-        x: 6,
-        z: 6,
-        duration: 3,
-      })
-    }
+
     return () => {
       gsap.to(lightRef.current, {
         intensity: mainIntensiti,
         duration: 1,
       })
 
+    }
+  }, [animationIndex])
+
+  useLayoutEffect(() => {
+    if (computerRef.current) {
+      if (animations[animationIndex] === 'seatIdle') {
+        setMainIntensity(0.1);
+        gsap.from(computerRef.current.position, {
+          x: 6,
+          z: 6,
+          duration: 3,
+        })
+      } else {
+        setMainIntensity(2);
+        gsap.to(computerRef.current.position, {
+          x: 6,
+          z: 6,
+          duration: 3,
+        })
+      }
     }
   }, [animationIndex])
 
@@ -128,8 +134,8 @@ const MainScene = () => {
             <AnimSkin />
 
             {/* компьютерный стол */}
-            <group ref={computerRef} position={[-0.1, 0.6, 0.2]} rotation={[0, 3, 0]} visible={animationIndex === 2}>
-              <Table />
+            <group ref={computerRef} position={[-0.1, 0.6, 0.2]} rotation={[0, 3, 0]} visible={true || animationIndex === 2}>
+              <TableModel />
               <pointLight position={[-0.18, 0.45, -0.37]} distance={3} intensity={0.91} color="rgb(255, 225, 130)" />
             </group>
           </Suspense>
