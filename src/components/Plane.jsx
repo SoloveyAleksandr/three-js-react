@@ -6,10 +6,6 @@ const Plane = (props) => {
 
   return (
     <group  {...props}>
-      {/* <mesh>
-        <planeGeometry args={[10, 10, 1, 1]} />
-        <meshBasicMaterial color="rgb(54, 54, 54)" />
-      </mesh> */}
       <mesh>
         <planeGeometry args={[100, 100]} />
         <MeshReflectorMaterial
@@ -17,18 +13,14 @@ const Plane = (props) => {
           resolution={1024}
           mixBlur={1}
           mixStrength={5}
-          roughness={1}
+          roughness={10}
           depthScale={1.2}
-          minDepthThreshold={0.4}
-          maxDepthThreshold={1.1}
+          minDepthThreshold={0.1}
+          maxDepthThreshold={0.3}
           color="#101010"
-          metalness={0.5}
+          metalness={0.9}
         />
       </mesh>
-      {/* <mesh receiveShadow>
-        <planeGeometry args={[100, 100, 1, 1]} />
-        <shadowMaterial transparent opacity={0.2} />
-      </mesh> */}
     </group>
   );
 };
