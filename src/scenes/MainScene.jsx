@@ -114,7 +114,7 @@ const MainScene = () => {
           <color attach="background" args={['#101010']} />
           <fog attach="fog" args={['#101010', 4, 10]} />
 
-          <Lamp position={[-1.6, 1.5, 0.4]} scale={[0.2, 0.2, 0.2]} intensity={0} />
+          <Lamp position={[-1.6, 1.5, 0.4]} scale={[0.2, 0.2, 0.2]} />
 
           <group>
             <Suspense fallback={null}>
